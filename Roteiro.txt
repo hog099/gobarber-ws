@@ -1,0 +1,48 @@
+>> Roteiro
+
+> Criar um backend com NodeJS, routes e nodemon
+
+
+DOCKER
+
+> Criar um container de postgres
+docker run --name database -e POSTGRRES_PASSWORD=docker -p 5432:5432 -d postgres
+
+> Mostrar os container criados
+docker ps
+
+> Parar o container
+docker stop >nome<
+
+> Iniciar container
+docker start >nome<
+
+
+SEQUELIZE (ORM)
+Abstração do banco de dados e ao inves de fazer o sql uso o JS para as querys e o sequelize traduz, assim pode usar ou mudar de mysql para postgres etc, também ha utilização de migrations para criação/alterações de tabelas.
+
+> ESLINT, padrao de codigo, ponto e virgula identacao, etc
+yarn add eslint
+yarn eslint --init
+yarn add prettier eslint-config-prettier eslint-plugin-prettier -D
+yarn eslint --fix src --ext .js  // corrigi todos os arquicvos de uma pasta
+
+
+> Instalar Sequelize
+yarn add sequelize
+yarn add sequelize-cli -D // para criscao de migrations e etc
+
+> Sequelize postgres, para database.js
+yarn add pg pg-hstore
+
+SEQUELIZE-CLI
+> Criar uma migrations
+yarn sequelize migration:create --name=create-users
+
+> Rodar as migrations
+yarn sequelize db:migrate
+
+> Rollback nas migrations
+yarn sequelize db:migrate:undo // desfaz a ultima a ser rodada
+yarn sequelize db:migrate:undo:all // desfaz todas migrations
+
