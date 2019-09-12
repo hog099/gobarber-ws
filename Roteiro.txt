@@ -46,3 +46,7 @@ yarn sequelize db:migrate
 yarn sequelize db:migrate:undo // desfaz a ultima a ser rodada
 yarn sequelize db:migrate:undo:all // desfaz todas migrations
 
+
+> Criptografia de senha com bcrypt
+yarn add bcryptjs
+
