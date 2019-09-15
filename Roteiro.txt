@@ -36,7 +36,7 @@ yarn add sequelize-cli -D // para criscao de migrations e etc
 yarn add pg pg-hstore
 
 SEQUELIZE-CLI
-> Criar uma migrations
+> Criar uma migrations (table)
 yarn sequelize migration:create --name=create-users
 
 > Rodar as migrations
@@ -56,3 +56,5 @@ yarn add jsonwebtoken
 > Validar campos da requisicao com yup
 yarn add yup
 
+> manipulação de arquivos para upload
+yarn add multer
