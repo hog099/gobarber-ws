@@ -46,6 +46,9 @@ yarn sequelize db:migrate
 yarn sequelize db:migrate:undo // desfaz a ultima a ser rodada
 yarn sequelize db:migrate:undo:all // desfaz todas migrations
 
+> Migrations de alteração de tabela
+yarn sequelize migration:create --name=create-avatar-field-to-users
+
 
 > Criptografia de senha com bcrypt
 yarn add bcryptjs
