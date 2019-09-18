@@ -61,3 +61,6 @@ yarn add yup
 
 > manipulação de arquivos para upload
 yarn add multer
+
+> validação de data
+yarn add date-fns@next
