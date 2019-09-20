@@ -1,4 +1,5 @@
 import Sequelize from 'sequelize';
+import mongoose from 'mongoose';
 
 import databseConfig from '../config/database';
 import User from '../app/models/User';
@@ -11,6 +12,7 @@ class Database {
 
   constructor(){
     this.init();
+    this.mongo();
 
   }
 
@@ -23,6 +25,18 @@ class Database {
 
 
   }
+
+mongo(){
+  this.mongoConnection = mongoose.connect(
+    'mongodb://localhost:27017/gobarber', 
+    {useNewUrlParser: true, 
+    // useFindAndModify: true,
+    useUnifiedTopology: true,
+  }
+    );
+}
+
+
 
 
 }

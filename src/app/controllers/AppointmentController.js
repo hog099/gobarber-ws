@@ -1,8 +1,10 @@
 import * as Yup from 'yup';
-import { startOfHour, parseISO, isBefore } from 'date-fns';
+import { startOfHour, parseISO, isBefore, format, subHours } from 'date-fns';
+import pt from 'date-fns/locale/pt';
 import User from '../models/User';
 import File from '../models/File';
 import Appointment from '../models/Appointment';
+import Notification from '../schemas/Notification';
 
 class AppointmentController {
 
@@ -79,6 +81,11 @@ class AppointmentController {
             return res.status(400).json({ error: 'Horário desejado não está disponivel' });
         }
 
+        
+        // Verificação se esta marcando um horrio para ele mesmo
+        if (provider_id === req.userId) {
+            return res.status(400).json({ error: 'Não é possível marcar um horario para voce mesmo' });
+        }
 
 
         // console.log(req.userId, req.body.provider_id, date);
@@ -90,9 +97,50 @@ class AppointmentController {
             date
         });
 
+
+
+        // Notificar prestador de servico - Incluuir no Mongodb
+        const user = await User.findByPk(user_id);
+        const formattedDate = format(
+            hourStart,
+            "'dia' dd 'de' MMMM', às' H:mm'h'",
+            {locale: pt}
+            );
+
+        await Notification.create({
+            content: `Novo Agendamento de ${user.name} para ${formattedDate}`,
+            user: provider_id,
+        });
+
+
         return res.json(appointment);
     }
 
+
+
+    async delete(req, res) {
+
+        const appointment = await Appointment.findByPk(req.params.id);
+
+        if(appointment.user_id !== req.userId){
+            return res.status(401).json({error: "Você não tem permissão para cancelar esse agendamento"});
+        }
+
+        // Reduz 2 horas da Hora do agendamento
+        const dateWithSub = subHours(appointment.date, 2);
+        // Verifica se tem 2 horas antes do marcado para deixar cancelar
+        if( isBefore(dateWithSub, new Date()) ){
+            return res.status(401).json({error: "Agendamento somente podem ser cancelados com 2 horas de antecedência"});
+        }
+
+
+        appointment.canceled_at = new Date();
+
+        await appointment.save();
+
+        return res.json(appointment);
+
+    }
 
 }
 
