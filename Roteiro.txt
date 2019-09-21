@@ -64,3 +64,32 @@ yarn add multer
 
 > validação de data
 yarn add date-fns@next
+
+> MongoDB
+docker run --name mongobarber -p 27017:27017 -d -t mongo
+yarn add mongoose
+
+> Nodemailer - usar Mailtrap
+yarn add nodemailer
+
+> Handlebars Template Engine to email
+yarn add express-handlebars nodemailer-express-handlebars
+
+
+
+> Redis criar um bd de chave valor para uma fila de tarefas por exmeplo
+docker run --name redisbarber -p 6379:6379 -d -t redis:alpine
+
+> bee-queue sistema de filas
+yarn add bee-queue
+
+> Sentry Io captação de erros
+
+> Captação de erros nos Async do express
+yarn add express-async-errors
+yarn add youch // rtata mensagens de eros
+
+> Manipular caminhar para variaveis de ambiente - process.env
+yarn add dotenv
+
+
