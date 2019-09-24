@@ -92,4 +92,6 @@ yarn add youch // rtata mensagens de eros
 > Manipular caminhar para variaveis de ambiente - process.env
 yarn add dotenv
 
+> Cors - permite conexao de outras aplicações por endereço
+yarn add cors
 
