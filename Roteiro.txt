@@ -95,3 +95,19 @@ yarn add dotenv
 > Cors - permite conexao de outras aplicações por endereço
 yarn add cors
 
+
+
+
+// FRONTEND
+
+> Rotas, roteamento
+yarn add react-router-dom 
+
+> HIstorico de navegacao
+yarn add history
+
+> Inspecionar e debug da aplicação
+yarn add reactotron-react-js
+
+> Propriedades de variaveis conforme tipagem
+yarn add prop-types
